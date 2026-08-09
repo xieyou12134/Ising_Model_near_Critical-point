@@ -1,0 +1,17 @@
+run_name: critical_L1024_parent_size_check
+split: parent_size_check
+split_id: 4
+beta: 0.44068679350977147
+parent_size: 1024
+n_chains: 4
+n_samples_per_chain: 128
+adaptation_sweeps: 5.0
+pilot_cluster_steps: 256
+pilot_rounds: 5
+burnin_sweeps: 50.0
+sweeps_between_samples: 2.0
+base_seed: 2026080905
+dtype: int8
+output_root: ../data/critical_L1024
+manifest_dir: ../manifests
+report_dir: ../reports

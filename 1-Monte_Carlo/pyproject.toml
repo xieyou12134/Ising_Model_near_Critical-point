@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "critical-ising-mc"
+version = "0.1.0"
+description = "Reproducible Wolff Monte Carlo data pipeline for critical 2D Ising windows"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24,<3",
+  "numba>=0.59,<1",
+  "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+torch = ["torch>=2"]
+
+[project.scripts]
+ising-mc = "critical_ising_mc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

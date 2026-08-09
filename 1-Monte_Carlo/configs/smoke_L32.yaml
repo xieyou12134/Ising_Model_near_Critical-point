@@ -1,0 +1,17 @@
+run_name: smoke_L32
+split: smoke
+split_id: 99
+beta: 0.44068679350977147
+parent_size: 32
+n_chains: 2
+n_samples_per_chain: 32
+adaptation_sweeps: 1.0
+pilot_cluster_steps: 16
+pilot_rounds: 2
+burnin_sweeps: 5.0
+sweeps_between_samples: 1.0
+base_seed: 2026080999
+dtype: int8
+output_root: ../data/smoke_L32
+manifest_dir: ../manifests/smoke
+report_dir: ../reports/smoke

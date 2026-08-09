@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.venv/
+
+# Monte Carlo production artefacts are generated on the compute server.
+1-Monte_Carlo/data/
+1-Monte_Carlo/logs/
+1-Monte_Carlo/manifests/**/*.csv
+1-Monte_Carlo/reports/**/*.csv
+1-Monte_Carlo/reports/**/*.npz
+1-Monte_Carlo/reports/**/validation.md
+1-Monte_Carlo/reports/parent_size_check.md

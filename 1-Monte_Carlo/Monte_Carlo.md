@@ -251,3 +251,7 @@ dtype: int8
 6. 数据可由模型 dataloader 读取，并能追溯到 chain、parent、crop 和 seed。
 
 完成后，主线模型只使用 `train` crop 优化参数，使用 `val` 选择 checkpoint；`reference_a` 和 `reference_b` 只用于最终物理比较。
+
+## 7. 对应实现
+
+本方案的生产代码、冻结配置、测试和 AutoDL 使用流程见 [`README.md`](README.md)。命令行入口为 `ising-mc`，实现位于 `src/critical_ising_mc/`；正式运行前必须先通过 `pytest` 和 `ising-mc smoke`。
