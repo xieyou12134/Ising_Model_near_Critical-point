@@ -1,0 +1,641 @@
+[2026-08-09T05:51:59Z] JOB_START pid=3603 repo=/root/autodl-tmp/Ising_Model_near_Critical-point
+[environment] Python 3.12.3
+[environment] cpu_count=208
+[environment] git_commit=07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab
+
+[2026-08-09T05:51:59Z] PHASE_START tests
+mv: cannot stat '/root/autodl-tmp/Ising_Model_near_Critical-point/1-Monte_Carlo/result/status.txt.tmp.3603': No such file or directory
+..........                                                               [100%]
+10 passed in 1.12s
+[2026-08-09T05:52:00Z] PHASE_END tests rc=0 elapsed_sec=1
+
+[2026-08-09T05:52:00Z] PHASE_START smoke
+{
+  "passed": true,
+  "generated": [
+    {
+      "adaptation_flips": 46,
+      "adaptation_realized_sweeps": 1.0458984375,
+      "beta": 0.44068679350977147,
+      "burnin_flips": 130,
+      "burnin_realized_sweeps": 62.4326171875,
+      "chain_id": 0,
+      "chain_seed": 6018847818087926286,
+      "config_sha256": "d0298f816567c1ea97d27eb10f47c67818a7de8c2198db371ceb089c11f3aec7",
+      "dtype": "int8",
+      "elapsed_seconds": 0.13884449005126953,
+      "final_rng_state": 9692946319562634667,
+      "gap_cluster_flips": 3,
+      "init_seed": 3141708743613013492,
+      "initial_state": "random",
+      "mean_realized_gap_sweeps": 1.263031005859375,
+      "metrics_path": "data/smoke_L32/smoke/chain_000.metrics.npz",
+      "post_pilot_flips": 32,
+      "post_pilot_mean_cluster_size": 345.96875,
+      "post_pilot_realized_sweeps": 10.8115234375,
+      "post_pilot_round_mean_cluster_sizes": [
+        498.375,
+        193.5625
+      ],
+      "pre_pilot_flips": 32,
+      "pre_pilot_mean_cluster_size": 39.5625,
+      "pre_pilot_realized_sweeps": 1.236328125,
+      "pre_pilot_round_mean_cluster_sizes": [
+        20.1875,
+        58.9375
+      ],
+      "provenance": {
+        "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+        "git_dirty": false,
+        "hostname": "autodl-container-29ff4c9452-9caa24ea",
+        "numba": "0.66.0",
+        "numpy": "2.4.6",
+        "python": "3.12.3"
+      },
+      "run_name": "smoke_L32",
+      "sha256": "3a8e22f9c315566577265f267ce0112b0ce7aaaa75aa0c1b551d871b6d60fe33",
+      "shape": [
+        32,
+        32,
+        32
+      ],
+      "shard_path": "data/smoke_L32/smoke/chain_000.npy",
+      "split": "smoke",
+      "wolff_seed": 4662635516220931115,
+      "status": "reused"
+    },
+    {
+      "adaptation_flips": 2,
+      "adaptation_realized_sweeps": 1.6787109375,
+      "beta": 0.44068679350977147,
+      "burnin_flips": 11,
+      "burnin_realized_sweeps": 4.787109375,
+      "chain_id": 1,
+      "chain_seed": 2879334117652067262,
+      "config_sha256": "d0298f816567c1ea97d27eb10f47c67818a7de8c2198db371ceb089c11f3aec7",
+      "dtype": "int8",
+      "elapsed_seconds": 0.1363377571105957,
+      "final_rng_state": 18402865668342478278,
+      "gap_cluster_flips": 2,
+      "init_seed": 228381073786415812,
+      "initial_state": "ordered_plus",
+      "mean_realized_gap_sweeps": 0.68597412109375,
+      "metrics_path": "data/smoke_L32/smoke/chain_001.metrics.npz",
+      "post_pilot_flips": 32,
+      "post_pilot_mean_cluster_size": 549.46875,
+      "post_pilot_realized_sweeps": 17.1708984375,
+      "post_pilot_round_mean_cluster_sizes": [
+        646.4375,
+        452.5
+      ],
+      "pre_pilot_flips": 32,
+      "pre_pilot_mean_cluster_size": 508.21875,
+      "pre_pilot_realized_sweeps": 15.8818359375,
+      "pre_pilot_round_mean_cluster_sizes": [
+        528.9375,
+        487.5
+      ],
+      "provenance": {
+        "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+        "git_dirty": false,
+        "hostname": "autodl-container-29ff4c9452-9caa24ea",
+        "numba": "0.66.0",
+        "numpy": "2.4.6",
+        "python": "3.12.3"
+      },
+      "run_name": "smoke_L32",
+      "sha256": "de296b5ec1fb05680f6e2a41c795204ecdc67b87c9a8d0694f2ce5026cbb2ade",
+      "shape": [
+        32,
+        32,
+        32
+      ],
+      "shard_path": "data/smoke_L32/smoke/chain_001.npy",
+      "split": "smoke",
+      "wolff_seed": 16118153076613176614,
+      "status": "reused"
+    }
+  ],
+  "verification": {
+    "passed": true,
+    "parents": 64,
+    "shards": 2,
+    "unique_chain_seeds": 2,
+    "checksums_verified": true
+  },
+  "diagnostics": {
+    "split": "smoke",
+    "n_chains": 2,
+    "n_samples": 64,
+    "mean_energy": -1.386474609375,
+    "energy_mcse": 0.0218505859375,
+    "energy_chain_bootstrap_ci95": [
+      -1.4083251953125,
+      -1.3646240234375
+    ],
+    "mean_magnetization": -0.041717529296875,
+    "mean_abs_magnetization": 0.573760986328125,
+    "mean_m2": 0.37435203790664673,
+    "mean_m4": 0.17940283438497318,
+    "binder_u4": 0.5732754372385245,
+    "mean_s0": 383.33648681640625,
+    "mean_skmin": 19.69311539178341,
+    "xi2_over_l": 0.6850126998999774,
+    "magnetization_chain_se": 0.038909912109375,
+    "magnetization_chain_bootstrap_ci95": [
+      -0.08062744140625,
+      -0.0028076171875
+    ],
+    "rhat_energy": 1.1586987977803305,
+    "rhat_abs_m": 1.1673092784652759,
+    "min_chain_ess": 4.62518969109997,
+    "target_ess_100_met": false,
+    "gibbs_max_error": 0.006193828211620039,
+    "fitted_correlation_exponent": NaN,
+    "invariants": {
+      "g0_error": 0.0,
+      "parseval_error": 1.1102230246251565e-16,
+      "energy_correlation_error": 0.0,
+      "s0_error": 0.0,
+      "fft_pair_error": 5.333067297272887e-15
+    },
+    "checks": {
+      "array_contract": true,
+      "invariants": true,
+      "rhat": false,
+      "ess_min_30": false,
+      "magnetization_zero": true,
+      "critical_energy": true,
+      "local_gibbs": true
+    },
+    "passed": false
+  }
+}
+[2026-08-09T05:52:01Z] PHASE_END smoke rc=0 elapsed_sec=1
+
+[2026-08-09T05:52:01Z] PHASE_START main_L512
+{
+  "diagnostics": {
+    "passed": true,
+    "seeds_unique": true,
+    "splits": {
+      "train": {
+        "split": "train",
+        "n_chains": 8,
+        "n_samples": 4096,
+        "mean_energy": -1.415469016879797,
+        "energy_mcse": 0.0002047305424577128,
+        "energy_chain_bootstrap_ci95": [
+          -1.4158610390499233,
+          -1.4151020398363472
+        ],
+        "mean_magnetization": 0.0039984602481126785,
+        "mean_abs_magnetization": 0.46180406771600246,
+        "mean_m2": 0.22875820499361055,
+        "mean_m4": 0.06127407813134952,
+        "binder_u4": 0.6096967468512399,
+        "mean_s0": 59967.59088984504,
+        "mean_skmin": 1829.8823322028038,
+        "xi2_over_l": 0.8970987056198879,
+        "magnetization_chain_se": 0.0063322225521584155,
+        "magnetization_chain_bootstrap_ci95": [
+          -0.007662252895534038,
+          0.01571953296661377
+        ],
+        "rhat_energy": 1.0042006083622295,
+        "rhat_abs_m": 1.000471203175299,
+        "min_chain_ess": 127.16462655117245,
+        "target_ess_100_met": true,
+        "gibbs_max_error": 2.615517406878709e-05,
+        "fitted_correlation_exponent": 0.22456869576265476,
+        "invariants": {
+          "g0_error": 0.0,
+          "parseval_error": 0.0,
+          "energy_correlation_error": 0.0,
+          "s0_error": 0.0,
+          "fft_pair_error": 2.055073891354581e-12
+        },
+        "checks": {
+          "array_contract": true,
+          "invariants": true,
+          "rhat": true,
+          "ess_min_30": true,
+          "magnetization_zero": true,
+          "critical_energy": true,
+          "local_gibbs": true
+        },
+        "passed": true
+      },
+      "val": {
+        "split": "val",
+        "n_chains": 4,
+        "n_samples": 2048,
+        "mean_energy": -1.415649875998497,
+        "energy_mcse": 0.0004339795474330123,
+        "energy_chain_bootstrap_ci95": [
+          -1.4164495691657066,
+          -1.4150531589984894
+        ],
+        "mean_magnetization": 0.006495565176010132,
+        "mean_abs_magnetization": 0.46590813994407654,
+        "mean_m2": 0.23183029115750742,
+        "mean_m4": 0.062290804244018165,
+        "binder_u4": 0.6136665413469347,
+        "mean_s0": 60772.919845193624,
+        "mean_skmin": 1767.3814346760785,
+        "xi2_over_l": 0.9196108809398948,
+        "magnetization_chain_se": 0.016798123002029743,
+        "magnetization_chain_bootstrap_ci95": [
+          -0.020639438182115555,
+          0.03736914321780205
+        ],
+        "rhat_energy": 1.0046467780536072,
+        "rhat_abs_m": 1.0037538730482023,
+        "min_chain_ess": 157.63995871124308,
+        "target_ess_100_met": true,
+        "gibbs_max_error": 5.791957853851226e-05,
+        "fitted_correlation_exponent": 0.22143267790341695,
+        "invariants": {
+          "g0_error": 0.0,
+          "parseval_error": 2.220446049250313e-16,
+          "energy_correlation_error": 0.0,
+          "s0_error": 0.0,
+          "fft_pair_error": 2.0469460557835903e-12
+        },
+        "checks": {
+          "array_contract": true,
+          "invariants": true,
+          "rhat": true,
+          "ess_min_30": true,
+          "magnetization_zero": true,
+          "critical_energy": true,
+          "local_gibbs": true
+        },
+        "passed": true
+      },
+      "reference_a": {
+        "split": "reference_a",
+        "n_chains": 4,
+        "n_samples": 2048,
+        "mean_energy": -1.4158750474452972,
+        "energy_mcse": 0.00018385880008125427,
+        "energy_chain_bootstrap_ci95": [
+          -1.4161363616585732,
+          -1.4155258610844612
+        ],
+        "mean_magnetization": -0.008935358375310898,
+        "mean_abs_magnetization": 0.47035711631178856,
+        "mean_m2": 0.23536924124172742,
+        "mean_m4": 0.06355783598699621,
+        "binder_u4": 0.617573100387171,
+        "mean_s0": 61700.63437607139,
+        "mean_skmin": 1692.1985473044151,
+        "xi2_over_l": 0.9477708586254946,
+        "magnetization_chain_se": 0.010173609438294968,
+        "magnetization_chain_bootstrap_ci95": [
+          -0.026375941932201385,
+          0.00850522518157959
+        ],
+        "rhat_energy": 1.0019759903018746,
+        "rhat_abs_m": 1.0017102990603401,
+        "min_chain_ess": 84.1718621498454,
+        "target_ess_100_met": false,
+        "gibbs_max_error": 2.6415327981366143e-05,
+        "fitted_correlation_exponent": 0.21809816697297027,
+        "invariants": {
+          "g0_error": 0.0,
+          "parseval_error": 0.0,
+          "energy_correlation_error": 0.0,
+          "s0_error": 0.0,
+          "fft_pair_error": 9.096596548773545e-13
+        },
+        "checks": {
+          "array_contract": true,
+          "invariants": true,
+          "rhat": true,
+          "ess_min_30": true,
+          "magnetization_zero": true,
+          "critical_energy": true,
+          "local_gibbs": true
+        },
+        "passed": true
+      },
+      "reference_b": {
+        "split": "reference_b",
+        "n_chains": 4,
+        "n_samples": 2048,
+        "mean_energy": -1.4154437109827995,
+        "energy_mcse": 0.00050833116745581,
+        "energy_chain_bootstrap_ci95": [
+          -1.416308969259262,
+          -1.414578452706337
+        ],
+        "mean_magnetization": 0.008623659610748291,
+        "mean_abs_magnetization": 0.4629885032773018,
+        "mean_m2": 0.22991862309925182,
+        "mean_m4": 0.061698387063709156,
+        "binder_u4": 0.6109510423412734,
+        "mean_s0": 60271.78753373027,
+        "mean_skmin": 1803.5046881393241,
+        "xi2_over_l": 0.9062006902300365,
+        "magnetization_chain_se": 0.006678126279899271,
+        "magnetization_chain_bootstrap_ci95": [
+          -0.004180066287517548,
+          0.01831372082233429
+        ],
+        "rhat_energy": 1.011508050332904,
+        "rhat_abs_m": 1.0081431079194765,
+        "min_chain_ess": 85.06731395854004,
+        "target_ess_100_met": false,
+        "gibbs_max_error": 3.534062411150729e-05,
+        "fitted_correlation_exponent": 0.22300453728346514,
+        "invariants": {
+          "g0_error": 0.0,
+          "parseval_error": 0.0,
+          "energy_correlation_error": 0.0,
+          "s0_error": 0.0,
+          "fft_pair_error": 1.3642719538924184e-12
+        },
+        "checks": {
+          "array_contract": true,
+          "invariants": true,
+          "rhat": true,
+          "ess_min_30": true,
+          "magnetization_zero": true,
+          "critical_energy": true,
+          "local_gibbs": true
+        },
+        "passed": true
+      }
+    }
+  },
+  "verification": {
+    "passed": true,
+    "parents": 10240,
+    "shards": 20,
+    "unique_chain_seeds": 20,
+    "checksums_verified": true
+  }
+}
+[2026-08-09T05:54:39Z] PHASE_END main_L512 rc=0 elapsed_sec=158
+
+[2026-08-09T05:54:39Z] PHASE_START generate_L1024
+[
+  {
+    "run_name": "critical_L1024_parent_size_check",
+    "split": "parent_size_check",
+    "chain_id": 0,
+    "chain_seed": 12369166520822129547,
+    "init_seed": 8773212762199850679,
+    "wolff_seed": 3755488078395505422,
+    "final_rng_state": 8855071445720338297,
+    "initial_state": "random",
+    "shape": [
+      128,
+      1024,
+      1024
+    ],
+    "dtype": "int8",
+    "beta": 0.44068679350977147,
+    "config_sha256": "e029ca8b376fb5a11e2125c40c6ef6708872f26435654aaa3e2fe851d3644f99",
+    "sha256": "a67f1cc3bb23325588c68caf4d1a1aad18355e72783a0673d69e1aa1ee489783",
+    "shard_path": "data/critical_L1024/parent_size_check/chain_000.npy",
+    "metrics_path": "data/critical_L1024/parent_size_check/chain_000.metrics.npz",
+    "adaptation_flips": 64313,
+    "adaptation_realized_sweeps": 5.005830764770508,
+    "pre_pilot_flips": 1280,
+    "pre_pilot_realized_sweeps": 1.9367942810058594,
+    "pre_pilot_mean_cluster_size": 1586.621875,
+    "pre_pilot_round_mean_cluster_sizes": [
+      1193.734375,
+      1082.984375,
+      1910.21484375,
+      2089.48828125,
+      1656.6875
+    ],
+    "burnin_flips": 33045,
+    "burnin_realized_sweeps": 5760.815433502197,
+    "post_pilot_flips": 1280,
+    "post_pilot_realized_sweeps": 254.93528842926025,
+    "post_pilot_mean_cluster_size": 208842.98828125,
+    "post_pilot_round_mean_cluster_sizes": [
+      235518.9375,
+      167841.75390625,
+      242998.25390625,
+      204862.59765625,
+      192993.3984375
+    ],
+    "gap_cluster_flips": 11,
+    "mean_realized_gap_sweeps": 1.9536355808377266,
+    "elapsed_seconds": 315.5419955253601,
+    "provenance": {
+      "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+      "git_dirty": false,
+      "python": "3.12.3",
+      "numpy": "2.4.6",
+      "numba": "0.66.0",
+      "hostname": "autodl-container-29ff4c9452-9caa24ea"
+    },
+    "status": "generated"
+  },
+  {
+    "run_name": "critical_L1024_parent_size_check",
+    "split": "parent_size_check",
+    "chain_id": 1,
+    "chain_seed": 3547238506300654268,
+    "init_seed": 3912484220221924051,
+    "wolff_seed": 6771838823896015209,
+    "final_rng_state": 12462258360686906473,
+    "initial_state": "ordered_plus",
+    "shape": [
+      128,
+      1024,
+      1024
+    ],
+    "dtype": "int8",
+    "beta": 0.44068679350977147,
+    "config_sha256": "e029ca8b376fb5a11e2125c40c6ef6708872f26435654aaa3e2fe851d3644f99",
+    "sha256": "02f80f856a6929e871346168cb1741edb00bda3f1f6031598aa52f590b60e7c8",
+    "shard_path": "data/critical_L1024/parent_size_check/chain_001.npy",
+    "metrics_path": "data/critical_L1024/parent_size_check/chain_001.metrics.npz",
+    "adaptation_flips": 15,
+    "adaptation_realized_sweeps": 5.231507301330566,
+    "pre_pilot_flips": 1280,
+    "pre_pilot_realized_sweeps": 237.37347030639648,
+    "pre_pilot_mean_cluster_size": 194456.346875,
+    "pre_pilot_round_mean_cluster_sizes": [
+      174088.55078125,
+      192846.91015625,
+      198721.078125,
+      184085.296875,
+      222539.8984375
+    ],
+    "burnin_flips": 270,
+    "burnin_realized_sweeps": 59.696455001831055,
+    "post_pilot_flips": 1280,
+    "post_pilot_realized_sweeps": 255.74493312835693,
+    "post_pilot_mean_cluster_size": 209506.24921875,
+    "post_pilot_round_mean_cluster_sizes": [
+      211431.66796875,
+      212631.96484375,
+      203030.8359375,
+      229416.59765625,
+      191020.1796875
+    ],
+    "gap_cluster_flips": 11,
+    "mean_realized_gap_sweeps": 2.0964177027344704,
+    "elapsed_seconds": 42.06514263153076,
+    "provenance": {
+      "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+      "git_dirty": false,
+      "python": "3.12.3",
+      "numpy": "2.4.6",
+      "numba": "0.66.0",
+      "hostname": "autodl-container-29ff4c9452-9caa24ea"
+    },
+    "status": "generated"
+  },
+  {
+    "run_name": "critical_L1024_parent_size_check",
+    "split": "parent_size_check",
+    "chain_id": 2,
+    "chain_seed": 10778720615920158661,
+    "init_seed": 11843392384713409600,
+    "wolff_seed": 17960315666097286862,
+    "final_rng_state": 15841663754212887038,
+    "initial_state": "random",
+    "shape": [
+      128,
+      1024,
+      1024
+    ],
+    "dtype": "int8",
+    "beta": 0.44068679350977147,
+    "config_sha256": "e029ca8b376fb5a11e2125c40c6ef6708872f26435654aaa3e2fe851d3644f99",
+    "sha256": "10102f5acef132078b39e6824f2f8f2d912625ffc39868d1705da871284215ef",
+    "shard_path": "data/critical_L1024/parent_size_check/chain_002.npy",
+    "metrics_path": "data/critical_L1024/parent_size_check/chain_002.metrics.npz",
+    "adaptation_flips": 62773,
+    "adaptation_realized_sweeps": 5.007035255432129,
+    "pre_pilot_flips": 1280,
+    "pre_pilot_realized_sweeps": 3.9575634002685547,
+    "pre_pilot_mean_cluster_size": 3242.0359375,
+    "pre_pilot_round_mean_cluster_sizes": [
+      1336.84765625,
+      3418.77734375,
+      2391.20703125,
+      5464.18359375,
+      3599.1640625
+    ],
+    "burnin_flips": 16172,
+    "burnin_realized_sweeps": 2564.194231033325,
+    "post_pilot_flips": 1280,
+    "post_pilot_realized_sweeps": 282.17304515838623,
+    "post_pilot_mean_cluster_size": 231156.15859375,
+    "post_pilot_round_mean_cluster_sizes": [
+      235495.19921875,
+      231790.87890625,
+      245245.9453125,
+      215735.25390625,
+      227513.515625
+    ],
+    "gap_cluster_flips": 10,
+    "mean_realized_gap_sweeps": 2.0152665823698044,
+    "elapsed_seconds": 157.73184895515442,
+    "provenance": {
+      "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+      "git_dirty": false,
+      "python": "3.12.3",
+      "numpy": "2.4.6",
+      "numba": "0.66.0",
+      "hostname": "autodl-container-29ff4c9452-9caa24ea"
+    },
+    "status": "generated"
+  },
+  {
+    "run_name": "critical_L1024_parent_size_check",
+    "split": "parent_size_check",
+    "chain_id": 3,
+    "chain_seed": 17364075727828272736,
+    "init_seed": 11660920486829699874,
+    "wolff_seed": 9589186528071294178,
+    "final_rng_state": 7125594341492514236,
+    "initial_state": "ordered_plus",
+    "shape": [
+      128,
+      1024,
+      1024
+    ],
+    "dtype": "int8",
+    "beta": 0.44068679350977147,
+    "config_sha256": "e029ca8b376fb5a11e2125c40c6ef6708872f26435654aaa3e2fe851d3644f99",
+    "sha256": "a7d841fb2c666fb67de969169d53e4d7ddd31c5c83123c82bc08f924fca3a697",
+    "shard_path": "data/critical_L1024/parent_size_check/chain_003.npy",
+    "metrics_path": "data/critical_L1024/parent_size_check/chain_003.metrics.npz",
+    "adaptation_flips": 12,
+    "adaptation_realized_sweeps": 5.263287544250488,
+    "pre_pilot_flips": 1280,
+    "pre_pilot_realized_sweeps": 236.29237937927246,
+    "pre_pilot_mean_cluster_size": 193570.7171875,
+    "pre_pilot_round_mean_cluster_sizes": [
+      226574.48828125,
+      186999.7109375,
+      151343.00390625,
+      219466.91796875,
+      183469.46484375
+    ],
+    "burnin_flips": 271,
+    "burnin_realized_sweeps": 48.69414806365967,
+    "post_pilot_flips": 1280,
+    "post_pilot_realized_sweeps": 259.7237539291382,
+    "post_pilot_mean_cluster_size": 212765.69921875,
+    "post_pilot_round_mean_cluster_sizes": [
+      226933.65234375,
+      221337.765625,
+      204994.44921875,
+      198927.58984375,
+      211635.0390625
+    ],
+    "gap_cluster_flips": 10,
+    "mean_realized_gap_sweeps": 1.9906377270817757,
+    "elapsed_seconds": 41.1333270072937,
+    "provenance": {
+      "git_commit": "07b3e23bfdb5d9b08a0efdacdbcf14d66bc5d7ab",
+      "git_dirty": false,
+      "python": "3.12.3",
+      "numpy": "2.4.6",
+      "numba": "0.66.0",
+      "hostname": "autodl-container-29ff4c9452-9caa24ea"
+    },
+    "status": "generated"
+  }
+]
+[2026-08-09T05:59:55Z] PHASE_END generate_L1024 rc=0 elapsed_sec=316
+
+[2026-08-09T05:59:56Z] PHASE_START parent_size_check
+{
+  "passed": false,
+  "sizes": {
+    "128": {
+      "mc_mc_natural_rms": 0.004931873402511227,
+      "parent_512_1024_rms": 0.012088337368287346,
+      "ratio": 2.451064003818948,
+      "passed": false,
+      "n_512_reference_a": 2048,
+      "n_512_reference_b": 2048,
+      "n_1024": 512
+    },
+    "256": {
+      "mc_mc_natural_rms": 0.0031967195429228857,
+      "parent_512_1024_rms": 0.010445339842727832,
+      "ratio": 3.267518373906911,
+      "passed": false,
+      "n_512_reference_a": 2048,
+      "n_512_reference_b": 2048,
+      "n_1024": 512
+    }
+  }
+}
+[2026-08-09T06:00:25Z] PHASE_END parent_size_check rc=2 elapsed_sec=29
+
+[2026-08-09T06:00:25Z] JOB_END state=failed rc=2

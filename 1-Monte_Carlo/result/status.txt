@@ -1,0 +1,10 @@
+state=failed
+phase=failed
+job_pid=3603
+started_utc=2026-08-09T05:51:59Z
+updated_utc=2026-08-09T06:00:25Z
+main_chains=20/20
+parent_size_chains=4/4
+partial_files=0
+data_size=3.1G
+exit_code=2
