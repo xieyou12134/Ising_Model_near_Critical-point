@@ -53,7 +53,7 @@ IsingDiffusionSystem.loss(batch) -> scalar loss
 
 - BF16 前向和反向，optimizer state 与 loss reduction 保持 FP32。
 - 使用 fused SDPA/Flash attention，不显式保存完整 attention matrix。
-- 按 $W=32,48,64$ 分别缓存编译图，避免动态 shape 反复编译。
+- 按 $W=32,64,128$ 分别缓存编译图，避免动态 shape 反复编译。
 - 优先采用 DDP/NanoDDP；模型参数单卡放不下时才考虑 FSDP。
 - 大模型训练可按 block 使用 activation checkpointing，推理时关闭。
 - 单卡小模型优先扩大 batch；多卡更适合并行不同 seed 或实验，而不是强行切分很小的模型。

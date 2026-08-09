@@ -1,0 +1,70 @@
+started_utc=2026-08-09T07:46:49Z
+{
+  "passed": true,
+  "parent_size": 512,
+  "sizes": {
+    "32": {
+      "passed": true,
+      "n_reference_a": 2048,
+      "n_reference_b": 2048,
+      "n_chains_a": 4,
+      "n_chains_b": 4,
+      "max_distance": 8,
+      "mean_energy": -1.4138912077872985,
+      "mean_magnetization": -0.0024099349975585938,
+      "magnetization_se": 0.006653448350273104,
+      "magnetization_z": 0.36220841745313515,
+      "binder_u4": 0.5625219003081647,
+      "reference_correlation_rms": 0.0011497460226315515,
+      "permutation_p_value": 0.8285714285714286,
+      "permutations": 70,
+      "checks": {
+        "reference_exchangeability": true,
+        "magnetization_zero": true
+      }
+    },
+    "64": {
+      "passed": true,
+      "n_reference_a": 2048,
+      "n_reference_b": 2048,
+      "n_chains_a": 4,
+      "n_chains_b": 4,
+      "max_distance": 16,
+      "mean_energy": -1.4169585212828615,
+      "mean_magnetization": -0.0061228275299072266,
+      "magnetization_se": 0.010952832079644507,
+      "magnetization_z": 0.5590177485954805,
+      "binder_u4": 0.5758391618928012,
+      "reference_correlation_rms": 0.0017653649550899127,
+      "permutation_p_value": 0.5428571428571428,
+      "permutations": 70,
+      "checks": {
+        "reference_exchangeability": true,
+        "magnetization_zero": true
+      }
+    },
+    "128": {
+      "passed": true,
+      "n_reference_a": 2048,
+      "n_reference_b": 2048,
+      "n_chains_a": 4,
+      "n_chains_b": 4,
+      "max_distance": 32,
+      "mean_energy": -1.4157612717996433,
+      "mean_magnetization": 0.003878653049468994,
+      "magnetization_se": 0.005993879064792601,
+      "magnetization_z": 0.647102320140522,
+      "binder_u4": 0.5786454552418681,
+      "reference_correlation_rms": 0.002884230072754566,
+      "permutation_p_value": 0.2857142857142857,
+      "permutations": 70,
+      "checks": {
+        "reference_exchangeability": true,
+        "magnetization_zero": true
+      }
+    }
+  }
+}
+evaluation_elapsed_sec=6
+finished_utc=2026-08-09T07:46:55Z
+exit_code=0

@@ -226,7 +226,7 @@ checkpoint 只根据训练尺度内的固定 validation NELBO 选择。$W>128$ �
 
 - DDP 与 site-aware 动态 batch adapter；
 - `condition_on_beta: true` 的多温度训练；
-- $W=192,256$ 及更大尺寸的冻结模型 context extrapolation；
+- $W=192,256$ 的工程 probe，以及 $W=384,512$ 的冻结模型 unseen-tail 实验；
 - 独立的物理评估、置信区间和 patch-shuffle 负控制。
 
 “模型能在更大张量上运行”只代表 shape extrapolation；只有 $G_c(r)$、磁化分布、Binder 和低波数结构在未见距离上接近独立 Monte Carlo 参考，才能支持物理尺度外推结论。

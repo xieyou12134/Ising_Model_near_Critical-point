@@ -285,7 +285,7 @@ $$
 建议 baseline 使用：
 
 - parent field：$L=512$ 或更大；
-- 训练宽度：$W\in\{32,48,64\}$；
+- 训练宽度：$W\in\{32,64,128\}$；
 - 训练增强：方格 $D_4$ 的旋转/反射，以及概率 $1/2$ 的全局 spin flip；
 - validation/test：固定、可复现、non-wrapping crop；
 - 不使用 patch shuffle 训练；它只作为破坏长程结构的负控制。
@@ -464,20 +464,20 @@ MaskGIT 的 confidence top-k sampler 可以作为速度对照，但它不是上�
 
 ### 7.1 Stage A：训练尺度内生成
 
-在 $W\in\{32,48,64\}$ 上训练并生成，先确认模型不仅恢复局部能量，还能恢复训练窗口内的 $G(r)$ 和 $G_c(r)$。独立 MC-vs-MC 给出有限样本噪声基线，patch-shuffle 给出“局部纹理相似但长程结构错误”的负控制。
+在 $W\in\{32,64,128\}$ 上训练并生成，先确认模型不仅恢复局部能量，还能恢复训练窗口内的 $G(r)$ 和 $G_c(r)$。独立 MC-vs-MC 给出有限样本噪声基线，patch-shuffle 给出“局部纹理相似但长程结构错误”的负控制。
 
 ### 7.2 Stage B：冻结模型的直接 context 外推
 
 冻结 Stage A checkpoint、采样器、步数、RoPE 和所有超参数，在
 
 $$
-W\in\{64,96,128,192,256\}
+W\in\{128,192,256,384,512\}
 $$
 
-上直接生成。若训练最大宽度为 $64$，可保守定义已见半径
+上直接生成。若训练最大宽度为 $128$，可保守定义已见半径
 
 $$
-R_{\mathrm{seen}}=32,
+R_{\mathrm{seen}}=64,
 $$
 
 并只在
@@ -486,7 +486,7 @@ $$
 R_{\mathrm{seen}}<r\leq\left\lfloor\frac{W}{4}\right\rfloor
 $$
 
-评价未见距离尾部。按这个定义，$W=96,128$ 主要是工程和过渡 probe，$W=192,256$ 才有非空的确认性 unseen tail。
+评价未见距离尾部。按这个定义，$W=192,256$ 主要是工程和过渡 probe，$W=384,512$ 才有非空的确认性 unseen tail。
 
 临界点的核心问题是生成关联能否在 unseen tail 中继续满足
 
@@ -626,7 +626,7 @@ noise seed 应从完整逻辑样本身份稳定派生：
 - **首选 DDP/NanoDDP**：参数规模不大时，显存主要由 activation 决定，复制参数通常比每层 FSDP all-gather 更合适。
 - **FSDP 作为 fallback**：只有模型参数本身不能放入单卡时再启用；Ising binary head 很小，不存在原视频大词表 head 的 shard 问题。
 - **每 block 编译**：保留 gradient hook 的通信重叠；whole-graph compile 可能让梯度集中在 backward 末尾完成。
-- **按 width 建图缓存**：训练宽度有限，分别 warm up $32,48,64$ 的 row/column kernel；不要让每个 batch 产生新 shape。
+- **按 width 建图缓存**：训练宽度有限，分别 warm up $32,64,128$ 的 row/column kernel；不要让每个 batch 产生新 shape。
 - **Flash/SDPA**：row 和 column 序列使用 fused scaled-dot-product attention，不显式物化 attention matrix。
 - **Activation checkpointing**：正式大模型训练可按 Transformer block 开启；推理时关闭。
 - **Token/site accounting**：日志同时记录 optimizer step、clean sites、processed noisy sites 和 samples，不能把不同宽度的 row 数直接比较。
@@ -718,7 +718,7 @@ outputs/<run_id>/
 2. 推理：absorbing reverse vs MaskGIT confidence sampler；
 3. 位置编码：一维 raster RoPE vs axial 2D RoPE；
 4. attention：小尺寸 dense attention vs axial attention；
-5. 训练尺寸：单一 $W=64$ vs $W\in\{32,48,64\}$；
+5. 训练尺寸：单一 $W=64$ vs $W\in\{32,64,128\}$；
 6. 条件：固定 $\beta_c$ vs 多 $\beta$ 条件模型；
 7. sampling steps：$16,32,64,128$；
 8. 数据控制：原始 MC vs patch-shuffle。
@@ -741,11 +741,11 @@ outputs/<run_id>/
 1. 实现单尺寸、小模型、单 GPU 的 corruption、loss 和 sampler 单元测试；
 2. 在 $W=16$ 上用小系统或可靠 MC 做 overfit/sanity test；
 3. 接入固定 validation $t$ 网格和 checkpoint resume；
-4. 实现 $W=32,48,64$ 的同形状 microbatch 调度；
+4. 实现 $W=32,64,128$ 的同形状 microbatch 调度；
 5. 加入 DDP、per-block compile 与严格等价测试；
 6. 完成训练尺度内的物理门禁；
-7. 冻结 checkpoint，运行 $W=96,128$ 工程 pilot；
-8. 仅在资源和协议通过后运行 $W=192,256$ unseen-tail 实验；
+7. 冻结 checkpoint，运行 $W=192,256$ 工程 pilot；
+8. 仅在资源和协议通过后运行 $W=384,512$ unseen-tail 实验；
 9. 最后再开启多温度条件、RoPE scaling、patch token 或 RG-aware 等干预。
 
 ## 14. 最小模型接口
