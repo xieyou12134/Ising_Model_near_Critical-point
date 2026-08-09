@@ -1,6 +1,6 @@
 base_seed: 2026080960
-training_sizes: [32, 48, 64]
-validation_sizes: [32, 48, 64]
-reference_sizes: [32, 48, 64, 128, 256]
+training_sizes: [32, 64, 128]
+validation_sizes: [32, 64, 128]
+reference_sizes: [32, 64, 128]
 validation_crops_per_parent: 1
 reference_crops_per_parent: 1

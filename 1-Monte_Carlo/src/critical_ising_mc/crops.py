@@ -213,7 +213,7 @@ class OnlineTrainingCropDataset:
         self,
         parent_manifest: str | Path,
         monte_carlo_root: str | Path,
-        sizes: Iterable[int] = (32, 48, 64),
+        sizes: Iterable[int] = (32, 64, 128),
         epoch_size: int = 100_000,
         base_seed: int = 2026080950,
     ):

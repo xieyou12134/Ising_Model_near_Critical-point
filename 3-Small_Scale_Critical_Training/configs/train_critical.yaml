@@ -9,7 +9,7 @@ data:
   train_split: train
   validation_manifest: ../../1-Monte_Carlo/manifests/val_crops.csv
   validation_split: val
-  widths: [32, 48, 64]
+  widths: [32, 64, 128]
   batch_size: 4
   seed: 2026080921
 

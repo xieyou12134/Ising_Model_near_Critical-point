@@ -1,6 +1,6 @@
 # 3. Small-Scale Critical Training
 
-本目录实现 `2-Model_Design` 中的小尺度临界 Ising 训练基线。训练宽度为 $W\in\{32,48,64\}$，目标是在进入大尺度 context extrapolation 之前，先验证模型、扩散目标、恢复机制和训练尺度内的生成能力。
+本目录实现 `2-Model_Design` 中的小尺度临界 Ising 训练基线。训练宽度为 $W\in\{32,64,128\}$，所有 crop 都来自固定的 $L=512$ 背景网格。目标是在进入大尺度 context extrapolation 之前，先验证模型、扩散目标、恢复机制和训练尺度内的生成能力。
 
 ## 1. 当前实验边界
 
@@ -218,7 +218,7 @@ outputs/<run_id>/
 └── samples/
 ```
 
-checkpoint 只根据训练尺度内的固定 validation NELBO 选择。$W>64$ 的外推结果不得用于选择 checkpoint、调整 RoPE 或改变 reverse steps。
+checkpoint 只根据训练尺度内的固定 validation NELBO 选择。$W>128$ 的外推结果不得用于选择 checkpoint、调整 RoPE 或改变 reverse steps。
 
 ## 9. 当前范围与下一阶段
 
@@ -226,7 +226,7 @@ checkpoint 只根据训练尺度内的固定 validation NELBO 选择。$W>64$ �
 
 - DDP 与 site-aware 动态 batch adapter；
 - `condition_on_beta: true` 的多温度训练；
-- $W=96,128,192,256$ 的冻结模型 context extrapolation；
+- $W=192,256$ 及更大尺寸的冻结模型 context extrapolation；
 - 独立的物理评估、置信区间和 patch-shuffle 负控制。
 
 “模型能在更大张量上运行”只代表 shape extrapolation；只有 $G_c(r)$、磁化分布、Binder 和低波数结构在未见距离上接近独立 Monte Carlo 参考，才能支持物理尺度外推结论。

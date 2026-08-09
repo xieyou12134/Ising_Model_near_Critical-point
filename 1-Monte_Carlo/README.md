@@ -59,6 +59,7 @@ ising-mc diagnose --config-dir configs
 ```bash
 ising-mc make-crops --config-dir configs --spec configs/crops.yaml
 ising-mc verify --config-dir configs
+ising-mc fixed-background-check --config-dir configs --spec configs/crops.yaml
 ```
 
 也可用一个命令执行生产、诊断、crop 和验收；若物理诊断失败，它会以非零状态退出且不创建 crop manifest：
@@ -67,16 +68,20 @@ ising-mc verify --config-dir configs
 ising-mc run-all --config-dir configs --workers 8
 ```
 
-### 父尺寸效应确认
+### 固定 $L=512$ 背景 crop 评估
 
-主数据通过后，再生成独立的小型 `L=1024` 确认集：
+本阶段明确把 $L=512$ 作为固定背景，不再把 $L=1024$ 对比作为质量门禁。对训练尺寸 $W\in\{32,64,128\}$，使用两个独立的 $L=512$ reference split 检查关联曲线的一致性和零场自旋翻转对称性：
 
 ```bash
-ising-mc generate --config configs/critical_L1024_parent_size_check.yaml --workers 4
-ising-mc parent-size-check --config-dir configs --spec configs/crops.yaml --max-distance 64
+ising-mc fixed-background-check \
+  --config-dir configs \
+  --spec configs/crops.yaml \
+  --distance-fraction 0.25
 ```
 
-程序分别比较 `W=128/256`、`r<=64` 的开放窗口关联函数，并以 `reference_a`–`reference_b` 的 MC–MC 差异作为自然误差基线。结果写入 `reports/parent_size_check.md` 和 `reports/parent_size_check.npz`。
+程序以 Monte Carlo 链为独立统计单位，对 `reference_a` 和 `reference_b` 的开放窗口关联曲线执行平衡标签置换检验，并检查合并链的平均磁化是否与 $0$ 相容。结果写入 `reports/fixed_background_check.md` 和 `reports/fixed_background_check.npz`。
+
+历史的 `parent-size-check` 命令仍保留用于可选研究，但其结果不再决定固定 $L=512$ 数据能否进入训练。
 
 ## 4. 目录和数据契约
 
@@ -101,6 +106,8 @@ ising-mc parent-size-check --config-dir configs --spec configs/crops.yaml --max-
 ├── reports/
 │   ├── chain_diagnostics.csv
 │   ├── observables.npz
+│   ├── fixed_background_check.md
+│   ├── fixed_background_check.npz
 │   └── validation.md
 ├── src/critical_ising_mc/
 └── tests/
@@ -126,7 +133,7 @@ from critical_ising_mc.crops import OnlineTrainingCropDataset
 train_data = OnlineTrainingCropDataset(
     parent_manifest="manifests/parents.csv",
     monte_carlo_root=".",
-    sizes=(32, 48, 64),
+    sizes=(32, 64, 128),
     epoch_size=100_000,
     base_seed=2026080950,
 )

@@ -8,6 +8,7 @@ from pathlib import Path
 from .config import load_config
 from .crops import create_fixed_crop_manifests
 from .diagnostics import diagnose_configs, diagnose_split
+from .fixed_background import run_fixed_background_check
 from .parent_size import run_parent_size_check
 from .sampling import generate_split
 from .verification import verify_configs, verify_crop_manifest
@@ -78,6 +79,14 @@ def build_parser() -> argparse.ArgumentParser:
     size_check.add_argument("--spec", default="configs/crops.yaml")
     size_check.add_argument("--max-distance", type=int, default=64)
 
+    fixed_background = subparsers.add_parser(
+        "fixed-background-check",
+        help="Evaluate training crops within the fixed L=512 background",
+    )
+    fixed_background.add_argument("--config-dir", default="configs")
+    fixed_background.add_argument("--spec", default="configs/crops.yaml")
+    fixed_background.add_argument("--distance-fraction", type=float, default=0.25)
+
     run_all = subparsers.add_parser(
         "run-all", help="Generate, diagnose, verify, and freeze crops"
     )
@@ -143,6 +152,12 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(json.dumps(result, indent=2, ensure_ascii=False))
             return 0 if result["passed"] else 2
+        elif args.command == "fixed-background-check":
+            result = run_fixed_background_check(
+                args.config_dir, args.spec, args.distance_fraction
+            )
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+            return 0 if result["passed"] else 2
         elif args.command == "run-all":
             configs = production_configs(args.config_dir)
             for path in configs:
@@ -153,14 +168,20 @@ def main(argv: list[str] | None = None) -> int:
                 return 2
             crop_spec = Path(args.config_dir) / "crops.yaml"
             create_fixed_crop_manifests(configs, crop_spec)
+            fixed_background = run_fixed_background_check(args.config_dir, crop_spec)
             result = verify_configs(configs, True)
             print(
                 json.dumps(
-                    {"diagnostics": diagnostics, "verification": result},
+                    {
+                        "diagnostics": diagnostics,
+                        "fixed_background": fixed_background,
+                        "verification": result,
+                    },
                     indent=2,
                     ensure_ascii=False,
                 )
             )
+            return 0 if fixed_background["passed"] else 2
         return 0
     except Exception as exc:  # noqa: BLE001 - CLI boundary converts failures to a clean exit code.
         print(f"ERROR: {exc}", file=sys.stderr)
